@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('url');
             $table->string('category');
             $table->foreignId('course_id')->constrained()->onDelete('cascade');
+            $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -16,7 +16,8 @@ class Video extends Model
         'title', 
         'url', 
         'course_id', 
-        'category_id'
+        'category_id',
+        'status'
     ];
 
 

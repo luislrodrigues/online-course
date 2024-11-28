@@ -17,6 +17,7 @@ return new class extends Migration
             $table->boolean('approved')->default(false);
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('video_id')->constrained()->onDelete('cascade');
+            $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('category');
             $table->enum('age_group', ['5-8', '9-13', '14-16', '16+']);
+            $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
             $table->softDeletes();
         });

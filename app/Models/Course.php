@@ -16,7 +16,8 @@ class Course extends Model
         'title',
         'description',
         'age_group',
-        'category_id'
+        'category_id',
+        'status'
     ];
 
     
