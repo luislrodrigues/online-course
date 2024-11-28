@@ -58,4 +58,17 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+
+    //relations
+    
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class, 'course_user')->withTimestamps();
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
 }
