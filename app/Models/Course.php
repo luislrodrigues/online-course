@@ -16,7 +16,7 @@ class Course extends Model
         'title',
         'description',
         'age_group',
-        'category_id',
+        'image',
         'status'
     ];
 
@@ -30,11 +30,12 @@ class Course extends Model
 
     public function videos()
     {
-        return $this->hasMany(Video::class);
+        return $this->belongsToMany(Video::class,'course_video');
     }
 
-    public function category()
+    public function categories()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsToMany(CourseCategory::class, 'course_category_course', 'course_id', 'category_id');
     }
+
 }

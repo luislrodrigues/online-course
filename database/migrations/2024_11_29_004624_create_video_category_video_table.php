@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('courses', function (Blueprint $table) {
+        Schema::create('video_category_video', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title');
-            $table->text('description');
-            $table->string('image');
-            $table->enum('age_group', ['5-8', '9-13', '14-16', '16+']);
-            $table->enum('status',['active','inactive'])->default('active');
-            $table->timestamps();
+            $table->foreignId('video_id')->constrained()->onDelete('cascade');
+            $table->foreignId('category_id')->constrained('video_categories')->onDelete('cascade');
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('courses');
+        Schema::dropIfExists('video_category_video');
     }
 };

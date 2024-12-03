@@ -15,8 +15,8 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('url');
-            $table->string('category');
-            $table->foreignId('course_id')->constrained()->onDelete('cascade');
+            $table->string('description');
+            $table->unsignedBigInteger('views')->default(0);
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
             $table->softDeletes();

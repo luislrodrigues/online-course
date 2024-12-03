@@ -16,5 +16,6 @@ class CourseUser extends Model
     protected $fillable = [
         'course_id',
         'user_id',
+        'progress'
     ];
 }

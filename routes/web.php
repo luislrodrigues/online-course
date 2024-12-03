@@ -1,5 +1,10 @@
 <?php
 
+use App\Livewire\CoursesManager\CoursesManager;
+use App\Livewire\CourseVideos\CourseVideos;
+use App\Livewire\StudentManager\StudentManager;
+use App\Livewire\VideoManager;
+use App\Livewire\VideosManager\VideosManager;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,15 +19,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.app');
 });
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register');
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/courses', CoursesManager::class)->name('courses');
+    Route::get('/videos', VideosManager::class)->name('videos');
+    Route::get('/student', StudentManager::class)->name('student');
+    Route::get('/courses/{course}/videos', CourseVideos::class)->name('course.videos');
 });
